@@ -1,0 +1,34 @@
+Lectures Notes -
+
+Preconditions & PostConditions
+- Frequently a programmer must comm precisely what a functin does, without any indication of how it works
+- PreCondition - what must be true before the fuction is called
+- PostCondition - statement indicates what is true after the functions performs its action
+
+Double wingspan (bird) {
+// Precondition: Pareameter must be abird
+// Some invalid Preconditions: A different animal that does not have wings
+
+}
+
+Double sqrt( double x) {
+
+// Precondition: x >= 0
+// PostCondition 
+}
+
+sqrt(-10); does not meet precondition
+sqrt(0); would meet the condition
+
+Bool isVowel (char c) {
+
+}
+
+isVowel( '?');
+// Nobody knows, because the precondition have been violated
+// Violating the precondition might even crash the pc
+
+-the programmer is resonsible fo rensuring that the precondition is valid when the function is called
+- the pgorammer who writes the function couns on the precondition being valid, and ensures that the postcondition becomes true at the 
+functions end
+
