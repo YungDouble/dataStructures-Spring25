@@ -42,3 +42,28 @@ Evaluation Order:
 Infix: Follows operator precedence and uses parentheses when needed.
 Postfix: Evaluated from left to right as operators appear.
 Prefix: Evaluated from right to left as operators appear.
+
+stringstream
+
+s>>ss;
+ss>>a;
+print -> a;
+
+PostFix Algorithm:
+WHILE more input items exist
+  GET an item
+  IF item is an operand 
+  stack.push(item)
+ELSE
+  stack.Pop(operand2)
+  stack.Pop(operand1)
+  stack.Push(result)
+stack.Pop(result)
+
+STACK - LIFO
+QUEUE - FIFO
+
+
+
+
+
