@@ -1,0 +1,44 @@
+Lecture 1/23/2025
+
+typedef int ItemType; - we can have many types of stack, ingeteger character etc
+- in a stack, you put items like in an array at index, 0, then 1, then 2 etc
+- you need to keep track of this by using the top
+- zero is the first position so when it is empty we will know by setting top to -1
+
+- Implement stack with linked list
+
+struct Node {
+  ItemType value;
+  Node *next;
+};
+
+Node *head; --> To record the top of the stack
+
+Overflow: Trying to push in a full stack
+Underflow: Trying to pop an emtpy stack
+
+
+2 + 3
+2 # + - postfix notation
+
+
+|_+
+|_3
+|_2
+
+Key Differences Between Notations
+Operator Position:
+
+Infix: The operator is placed between operands (e.g., A + B).
+Postfix: The operator is placed after operands (e.g., AB +).
+Prefix: The operator is placed before operands (e.g., + AB).
+Use of Parentheses:
+
+Infix: Parentheses are sometimes required to enforce precedence (e.g., (A + B) * C).
+Postfix: Parentheses are not needed; the order of evaluation is inherent.
+Prefix: Parentheses are not needed; the order of evaluation is inherent.
+Evaluation Order:
+
+Infix: Follows operator precedence and uses parentheses when needed.
+Postfix: Evaluated from left to right as operators appear.
+Prefix: Evaluated from right to left as operators appear.
