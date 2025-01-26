@@ -32,3 +32,19 @@ isVowel( '?');
 - the pgorammer who writes the function couns on the precondition being valid, and ensures that the postcondition becomes true at the 
 functions end
 
+-- Example:
+
+Evaluate the postfix expression: 4 5 6 * +
+
+Step 1: Push 4 onto the stack.
+Step 2: Push 5 onto the stack.
+Step 3: Push 6 onto the stack.
+Step 4: Encounter *:
+Pop 6 and 5.
+Compute 5 * 6 = 30.
+Push 30 onto the stack.
+Step 5: Encounter +:
+Pop 30 and 4.
+Compute 4 + 30 = 34.
+Push 34 onto the stack.
+The final result is 34.
