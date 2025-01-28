@@ -1,0 +1,142 @@
+Lecture Notes 
+DS 01/28/2025
+
+Template functions can be used with many data types
+When you write a template function you name a data type for the function
+
+template <typename> T>
+T maximum( T x, T y) {
+	if ( x > y) return x;
+	else return y;
+}
+
+int main(void) {
+	int x = 0;
+	cout << maximum<int>(x, ++x); // prints 1
+	cout << x; // prints 1
+	string s = "Hello";
+	string t = "world";
+	cout << maximum<string>(s, t); // prints world
+}
+
+- *do not mix different data types
+
+Big-O Notation
+
+For a given function g(n) we can write
+O(g(n)) = {f(n): there exist
+non-negative constants c and nsub0 such that 
+0 <= f(n) <= cg(n)
+for all n >= nsub0
+}
+
+In algorithm analysis, Big Omega (Ω) notation is used to describe the lower bound of an algorithm's running time. It provides a guarantee that the algorithm will take at least a certain amount of time, regardless of the input size. In other words, Big Omega notation gives the best-case scenario for an algorithm's time complexity. 
+KHAN ACADEMY
+
+Formal Definition:
+
+A function 
+𝑓
+(
+𝑛
+)
+f(n) is said to be Ω(g(n)) if there exist positive constants 
+𝑐
+c and 
+𝑛
+0
+n 
+0
+​
+  such that for all 
+𝑛
+≥
+𝑛
+0
+n≥n 
+0
+​
+ , the following holds:
+
+𝑓
+(
+𝑛
+)
+≥
+𝑐
+⋅
+𝑔
+(
+𝑛
+)
+f(n)≥c⋅g(n)
+
+This means that beyond a certain point 
+𝑛
+0
+n 
+0
+​
+ , the function 
+𝑓
+(
+𝑛
+)
+f(n) will always be at least a constant multiple of 
+𝑔
+(
+𝑛
+)
+g(n). 
+GEEKSFORGEEKS.ORG
+
+Example:
+
+Consider the function 
+𝑓
+(
+𝑛
+)
+=
+3
+𝑛
+2
++
+2
+𝑛
+f(n)=3n 
+2
+ +2n. To determine the Big Omega notation for this function, we focus on the term that grows the fastest as 
+𝑛
+n increases, which is 
+𝑛
+2
+n 
+2
+ . Therefore, 
+𝑓
+(
+𝑛
+)
+=
+Ω
+(
+𝑛
+2
+)
+f(n)=Ω(n 
+2
+ ). This indicates that the function's growth rate has a lower bound proportional to 
+𝑛
+2
+n 
+2
+ .
+
+Comparison with Other Notations:
+
+Big O (O): Describes the upper bound of an algorithm's running time, representing the worst-case scenario.
+
+Big Theta (Θ): Indicates that a function is both O(g(n)) and Ω(g(n)), providing a tight bound on the running time.
+
+Understanding Big Omega notation is crucial for analyzing the efficiency of algorithms, as it helps in determining the minimum time required for an algorithm to complete its execution. 
