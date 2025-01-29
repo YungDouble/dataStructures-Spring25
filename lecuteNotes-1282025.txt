@@ -49,13 +49,9 @@ n
 0
 ​
   such that for all 
-𝑛
-≥
-𝑛
-0
+𝑛≥𝑛0
 n≥n 
-0
-​
+0​
  , the following holds:
 
 𝑓
