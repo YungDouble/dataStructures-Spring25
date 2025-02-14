@@ -1,0 +1,121 @@
+### **🟢 Updated Steps for Your Paper on Quantum Computing & Deep Seek’s Market Impact**  
+
+Now that we’ve confirmed your topic **aligns with Brey’s argument**, let’s go over the steps again and tailor them to **fit your new focus** on quantum computing and financial AI risks.  
+
+---
+
+## **🟢 Cover Page (Separate Page)**
+📌 **Formatting Requirements:**  
+- **Title:** Ethical Implications of Quantum Computing: A Case Study on Deep Seek’s Market Impact  
+- **Your Name**  
+- **CS 2315 – Computer Ethics**  
+- **Spring 2025**  
+- **Professor’s Name**  
+
+---
+
+## **🟢 Step 1: Introduction (½ Page)**
+📌 **What to Include:**  
+- **Briefly introduce quantum computing** as an emerging, disruptive technology.  
+- Explain that **Brey’s article warns of unforeseen ethical consequences in emerging IT** and how this applies to **financial AI models like Deep Seek**.  
+- **Thesis Statement:**  
+  - Quantum computing has **unpredictable ethical risks**, particularly in **AI-driven decision-making for financial markets**.  
+  - **Deep Seek’s AI-driven financial crisis** is a **real-world example** of Brey’s concerns.  
+  - This paper will **apply Brey’s ethical foresight model** to quantum computing and **discuss policy and legal recommendations** to mitigate future risks.  
+
+📌 **🔹 Sample Start for You to Use:**  
+> Quantum computing represents a major breakthrough in computational power, with the potential to revolutionize fields such as cybersecurity, artificial intelligence, and financial modeling. However, as Philip A. E. Brey discusses in his work on anticipating ethical issues in emerging IT, these **transformative technologies also pose serious ethical risks that are often only understood after significant harm has occurred**.  
+>  
+> One such example is **Deep Seek**, a quantum-powered AI trading system that **contributed to a sudden financial crash**, wiping out billions from the U.S. tech and AI stock markets. This incident highlights **the unforeseen risks of quantum computing in financial decision-making** and raises important ethical concerns.  
+>  
+> This paper will apply Brey’s **ethical foresight methodology** to analyze the risks of quantum computing in finance, compare his approach with traditional ethical theories, and provide recommendations for policy and regulatory oversight.  
+
+---
+
+## **🟢 Step 2: Brey’s Ethical Framework & Methodology (1 Page)**
+📌 **What to Include:**  
+- Summarize **Brey’s key argument**:  
+  - **Emerging technologies** often produce **unintended ethical consequences**.  
+  - **Ethical foresight** is needed to **predict and mitigate these risks before they occur**.  
+  - Without foresight, new technology can cause **harm on a global scale**.  
+- Explain **his methodology** (**What/Why/How**):  
+  - **What?** Ethical risks in emerging IT are **often invisible until too late**.  
+  - **Why?** The speed of technological innovation **outpaces regulation and oversight**.  
+  - **How?** By applying **proactive ethical analysis** and **comparing new tech risks to past failures**.  
+
+📌 **🔹 Sample Start for You to Use:**  
+> In his article, **Anticipating Ethical Issues in Emerging IT**, Philip A. E. Brey argues that **emerging technologies pose unique ethical challenges that must be addressed before widespread adoption**. Unlike traditional ethical dilemmas, the risks associated with new IT developments are **often invisible until a crisis occurs**, making ethical foresight an essential strategy for risk mitigation.  
+>  
+> Brey’s methodology focuses on identifying **potential ethical risks before they manifest**, using **historical cases, predictive modeling, and policy intervention** to ensure **technological advancements align with societal well-being**. This paper applies Brey’s approach to **quantum computing in financial markets**, using the Deep Seek case as an example of how **unanticipated consequences can destabilize global economies**.  
+
+---
+
+## **🟢 Step 3: Case Study – Quantum Computing & Deep Seek’s Market Crash (1 Page)**
+📌 **What to Include:**  
+- **Explain Deep Seek**:  
+  - Quantum-powered AI used in **high-frequency trading (HFT)**.  
+  - Analyzes **billions of data points** in real-time for financial decision-making.  
+- **Describe the Market Crash**:  
+  - **Unexpected AI behavior** led to massive stock sell-offs.  
+  - **Billions were wiped from the market within hours**, causing panic.  
+- **Connect this to Brey’s argument**:  
+  - The **unforeseen impact** of quantum AI on financial markets **was not anticipated**.  
+  - **Regulators and companies failed to foresee the risk**, much like past tech failures (e.g., 2008 financial crisis caused by unchecked financial algorithms).  
+
+📌 **🔹 Sample Start for You to Use:**  
+> The Deep Seek AI system was designed to **revolutionize high-frequency trading (HFT)** by leveraging quantum computing to analyze market trends faster than any human trader. However, in early 2025, **Deep Seek’s predictive algorithms miscalculated risk**, leading to an **unexpected series of massive stock sell-offs** across the U.S. tech and AI markets. Within hours, **billions of dollars were erased from the stock market**, with major firms suffering catastrophic losses.  
+>  
+> This financial collapse highlights Brey’s argument that **the greatest risks in emerging IT are those that remain invisible until disaster strikes**. The Deep Seek incident mirrors previous **financial crises driven by unchecked technological systems**, demonstrating the need for **ethical foresight in quantum AI applications**.  
+
+---
+
+## **🟢 Step 4: Ethical Theory Comparison (½ - 1 Page)**
+📌 **What to Include:**  
+- **Compare Brey’s ethical foresight model with traditional ethical theories:**  
+  - **Utilitarianism** → Did the **financial benefits of Deep Seek** outweigh the harm?  
+  - **Deontology** → Should companies **be required to implement ethical safeguards** in quantum AI?  
+  - **Virtue Ethics** → Did financial institutions act **responsibly** in deploying this tech?  
+
+📌 **🔹 Sample Start for You to Use:**  
+> Brey’s model of **ethical foresight** aligns closely with **utilitarian ethics**, as both emphasize **anticipating future consequences** to minimize harm. However, a **deontological perspective** would argue that financial institutions had a **moral duty** to prevent AI systems from **operating without safeguards**, regardless of potential profits.  
+
+---
+
+## **🟢 Step 5: Policy & Ethical Recommendations (1 Page)**
+📌 **What to Include:**  
+- **Policy Recommendations** → Stricter AI oversight in financial markets.  
+- **Legal Frameworks** → Government-mandated risk assessment for quantum AI.  
+- **Human Rights & Ethics** → Prevent **AI market manipulation** that harms everyday investors.  
+- **Sustainability** → Should AI control financial decisions with no human oversight?  
+
+📌 **🔹 Sample Start for You to Use:**  
+> To prevent future crises like the Deep Seek crash, **governments and financial institutions must adopt new policies regulating quantum-powered AI**. Regulatory frameworks should require **comprehensive risk assessments**, **human oversight in AI-driven trading**, and **full transparency in algorithmic decision-making**.  
+
+---
+
+## **🟢 Step 6: Conclusion (½ Page)**
+📌 **What to Include:**  
+- **Restate the risks of quantum computing in finance**.  
+- **Summarize Brey’s methodology** and its relevance.  
+- **Call for proactive ethical oversight and regulation**.  
+
+📌 **🔹 Sample Start for You to Use:**  
+> Quantum computing represents a **groundbreaking technological advancement**, but without proper oversight, it poses significant ethical risks. As demonstrated by Deep Seek’s market disruption, **quantum-powered AI systems can cause unforeseen consequences** that destabilize economies. Brey’s ethical foresight model offers a framework for **anticipating and mitigating these risks**, underscoring the **urgent need for regulatory action**.  
+
+---
+
+## **🟢 Step 7: Cited Works (Separate Page)**
+📌 **Use IEEE format.** Example:  
+```
+[1] P. A. E. Brey, "Anticipating ethical issues in emerging IT," Journal Name, vol. X, no. Y, pp. Z-Z, Year.  
+[2] Author Name, "Title of additional source," Journal Name, vol. X, no. Y, pp. Z-Z, Year.  
+```
+
+---
+
+### **🔥 Final Steps**
+✅ **Use this structure to fill in your paper.**  
+✅ **Find a scholarly source on quantum AI ethics.**  
+✅ **Format in IEEE before submitting.**  
+
+🚀 **Let me know if you need help fleshing out any section!**
