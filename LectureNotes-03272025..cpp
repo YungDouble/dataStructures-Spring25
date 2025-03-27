@@ -1,6 +1,9 @@
+/*
 Lecture Notes 3/27/2025
 
-- Last class we talked about Dij Algorithm 
+*/
+
+/* Last class we talked about Dij Algorithm 
 
 - The next mid-term is on _______, to prepare for the exam
 - the deadline for the exam is next Sunday, he will send this to us to help with the exam
@@ -44,7 +47,8 @@ lot of money, but all houses are still connected to each other
 - in Prims we are only considering the lenght of the edge, but in priority queue 
 - we are not considering the full length, in Prims we are only consideted with the minimal lenght of the available edges
 
-
+*/
+ 
 -Prims Algorithm
 For each node V:
 V.cost = infinity
@@ -58,13 +62,18 @@ While there are unknown noes in the graph:
   Select unknown node v with lowest cost
 ....
 
-
-- Kruskals Algorithm Idea
+/*
+- **** Kruskals Algorithm Idea ****
 - Select the smalled "unused" edge 
 - Check if hey are connecting two unconnected part of the graph
   if yes , use that edge
 - repeat these steps until the graph is connected
 
+- When there are muliple edges, ....
+
+- Example 2
+- Use Kruskals Algorithm: 
 
 
 
+*/
