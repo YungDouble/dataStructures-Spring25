@@ -78,3 +78,147 @@ Array: [2, 4, 5, 9, 10, 8]
   - Remove root (index 0), move last element to root, then **heapify down** (swap with smaller child until heap property restored).
 - **Build Heap**:
   - From unsorted array in O(n) time using `heapify()` from bottom-up.
+
+#### Adding & Delting Nodes
+- New nodes are always inserted at the bottom level (Left to right)
+- Nodes are removed from the bottom level (right to left)
+
+- Max-Heap-Insert Algorithm
+Alg(MAX-HEAP-INSERT(A, key, n)
+1. heap-size[A] <- n + 1
+2. A[n + 1] <- -infinity
+3. HEAP-INCREASE-KEY(A, n + 1, key)
+-- running time is O(log n)
+
+
+
+---
+
+### 🌳 What is a Binary Search Tree (BST)?
+
+A **Binary Search Tree** is a **binary tree** with the following properties:
+
+1. **Left Subtree < Root**: All nodes in the left subtree have **values less than the root**.
+2. **Right Subtree > Root**: All nodes in the right subtree have **values greater than the root**.
+3. **No duplicates** (in standard BSTs).
+4. This rule applies **recursively** to every subtree.
+
+---
+
+### 📈 Example of a BST
+
+```
+        8
+       / \
+      3   10
+     / \    \
+    1   6    14
+       / \   /
+      4   7 13
+```
+
+---
+
+### 🧠 Key BST Operations
+
+| Operation     | Description                                      | Time (avg) | Time (worst) |
+|---------------|--------------------------------------------------|------------|---------------|
+| **Insert**     | Add a value by traversing left/right.            | O(log n)   | O(n)         |
+| **Search**     | Look for a value via comparisons.                | O(log n)   | O(n)         |
+| **Delete**     | Remove a node, handle 3 cases (see below).       | O(log n)   | O(n)         |
+| **Traversal**  | In-order (sorted), Pre-order, Post-order, etc.   | O(n)       | O(n)         |
+
+---
+
+### 🗑️ Deletion in BST (3 Cases)
+
+1. **Node is a leaf**: Just delete it.
+2. **Node has one child**: Replace it with its child.
+3. **Node has two children**:
+   - Find **in-order successor** (smallest in right subtree) or **in-order predecessor** (largest in left subtree).
+   - Replace node’s value with that.
+   - Delete successor/predecessor node.
+
+---
+
+### 🔁 BST Traversals
+
+- **In-order (LNR)**: Left → Node → Right → gives **sorted order**.
+- **Pre-order (NLR)**: Node → Left → Right → useful for copying the tree.
+- **Post-order (LRN)**: Left → Right → Node → used to delete the tree.
+
+---
+
+### ❗Limitations
+
+- Not balanced → can degrade to **linked list** (e.g., inserting sorted elements).
+- Worst case time: O(n)
+  
+✅ That’s why we have **balanced BSTs** like **AVL Tree** or **Red-Black Tree** (which we'll cover next if you want).
+
+Awesome — let’s talk about **balancing a Binary Search Tree (BST)**, which is crucial for keeping operations fast. Here's your quick, clear breakdown:
+
+---
+
+### ⚖️ Why Balance a BST?
+
+- **Unbalanced BST**: If you insert elements in sorted order (e.g., 1, 2, 3, 4…), the BST becomes a **linked list**:
+  ```
+  1
+   \
+    2
+     \
+      3
+       \
+        4
+  ```
+  - Operations like search, insert, and delete degrade from **O(log n)** to **O(n)**.
+
+- **Balanced BST**: Keeps the tree’s height as small as possible, ideally **O(log n)**. This ensures operations remain efficient.
+
+---
+
+### 🛠️ Types of Balanced Trees
+
+#### 1. **AVL Tree**
+- **Self-balancing BST**: After each insert/delete, it checks balance.
+- **Balance factor** = height(left subtree) – height(right subtree)
+  - Must be -1, 0, or +1.
+- If not, perform **rotations** (single or double) to rebalance.
+
+✅ Rotations:
+- **Right Rotation (RR)**: Used when left-left heavy.
+- **Left Rotation (LL)**: Used when right-right heavy.
+- **Left-Right (LR)** and **Right-Left (RL)**: Two-step rotations.
+
+#### 2. **Red-Black Tree**
+- A BST where each node is **red or black**, with rules to maintain balance.
+- Ensures the **longest path is no more than twice the shortest**.
+- Used in many real-world systems (e.g., Java TreeMap, Linux scheduler).
+
+Red-Black Rules:
+1. Every node is red or black.
+2. Root is always black.
+3. No two red nodes in a row.
+4. Every path from a node to null must have the same number of black nodes.
+
+🔄 Insertion/Deletion may trigger **color flips** or **rotations**.
+
+#### 3. **Splay Tree**
+- Recently accessed elements are moved to the root using rotations.
+- Helps with **temporal locality** (if you access the same data repeatedly).
+
+---
+
+### ⏳ Summary of Time Complexities
+
+| Tree Type     | Insert | Search | Delete |
+|---------------|--------|--------|--------|
+| BST (avg)     | O(log n) | O(log n) | O(log n) |
+| BST (worst)   | O(n)     | O(n)     | O(n)     |
+| AVL Tree      | O(log n) | O(log n) | O(log n) |
+| Red-Black Tree| O(log n) | O(log n) | O(log n) |
+
+---
+
+✅ Want to walk through a rotation example or code up insertions in an AVL or Red-Black Tree next?
