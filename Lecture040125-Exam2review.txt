@@ -879,4 +879,91 @@ Total cost: **1 + 2 + 3 = 6**
 
 ---
 
-✅ Let me know if you want to code one of these in C++, trace an example by hand, or look at Kruskal’s Algorithm next!
+Great! Let’s dive into **Kruskal’s Algorithm** — another essential way to build a **Minimum Spanning Tree (MST)**. It’s also **greedy**, but works very differently from Prim’s.
+
+---
+
+## 🌉 Kruskal’s Algorithm
+
+### 🎯 **Goal**: Build an MST by **adding the smallest edges** first, **avoiding cycles**.
+
+---
+
+### 🧠 How It Works:
+
+1. Sort **all edges** by weight (ascending).
+2. Use a **Disjoint Set (Union-Find)** structure to track connected components.
+3. Start adding edges:
+   - Add the **smallest edge** that **doesn’t create a cycle**.
+   - Repeat until you’ve added **V - 1 edges** (where V is number of vertices).
+
+---
+
+### 🧮 Pseudocode (simplified):
+
+```cpp
+function Kruskal(Graph):
+    sort edges by weight
+    create disjoint sets for all vertices
+    MST = []
+
+    for each edge (u, v) in sorted edges:
+        if Find(u) ≠ Find(v):  // no cycle
+            Union(u, v)
+            MST.add((u, v))
+
+    return MST
+```
+
+✅ Uses **Union-Find (Disjoint Set Union - DSU)**:
+- `Find(x)`: finds the root of the set containing x.
+- `Union(x, y)`: joins the sets containing x and y.
+
+With path compression + union by rank: **O(E log V)** runtime.
+
+---
+
+### 📈 Example:
+
+Graph:
+
+```
+   (1)
+A------C
+|\     |
+| \    |
+4  3   2
+|   \  |
+B-----D
+   (5)
+```
+
+**Edges sorted by weight**:
+- A–C (1)
+- C–D (2)
+- A–D (3)
+- A–B (4)
+- B–D (5)
+
+Steps:
+1. Add A–C → no cycle ✅
+2. Add C–D → no cycle ✅
+3. Add A–D → would create cycle ❌
+4. Add A–B → no cycle ✅
+
+✅ MST edges: A–C, C–D, A–B  
+**Total weight**: 1 + 2 + 4 = **7**
+
+---
+
+### 🥊 Prim vs Kruskal – Quick Recap
+
+| Feature        | Prim’s                       | Kruskal’s                     |
+|----------------|-------------------------------|-------------------------------|
+| Starts With    | Any node                      | Edges (sorted by weight)      |
+| Strategy       | Grows connected component     | Connects components (sets)    |
+| Uses           | Priority Queue (Min-Heap)     | Union-Find                    |
+| Best For       | Dense graphs                  | Sparse graphs                 |
+
+---
+
