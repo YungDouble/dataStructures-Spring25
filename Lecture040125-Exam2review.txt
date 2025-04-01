@@ -1,0 +1,80 @@
+Lecture 4/1/2025 
+- this one is from Slides 9 onward
+
+- Heap will be on this tests
+- Starting from Heap to Minimum Spanning Tree
+
+### 🔺 What is a Heap?
+
+A **heap** is a special type of **binary tree** that satisfies the following properties:
+
+1. **Complete Binary Tree**: Every level is fully filled except possibly the last, which is filled from left to right.
+2. **Heap Property**: The value of each node is **ordered with respect to its children**.
+
+There are two main types:
+
+### ✅ Min-Heap
+
+- **Definition**: A binary heap where **each parent node is less than or equal to its children**.
+- **Property**: The **minimum element is always at the root**.
+- **Use Case**: Priority queues (where the smallest value gets removed first).
+
+```
+        2
+      /   \
+     4     5
+    / \   / 
+   9  10 8
+```
+
+---
+
+### ✅ Max-Heap
+
+- **Definition**: A binary heap where **each parent node is greater than or equal to its children**.
+- **Property**: The **maximum element is always at the root**.
+- **Use Case**: Priority queues where highest priority = largest number.
+
+```
+        10
+       /  \
+      9    5
+     / \   /
+    2   4 3
+```
+
+---
+
+### 📦 Array Representation of a Heap
+
+We store the heap as an array where:
+
+- **Root is at index 0** (or index 1 depending on convention).
+- For a node at index `i`:
+  - **Left child** = `2*i + 1`
+  - **Right child** = `2*i + 2`
+  - **Parent** = `(i - 1) / 2` (integer division)
+
+**Example Min-Heap stored as array:**
+
+```
+Heap Tree:
+        2
+      /   \
+     4     5
+    / \   /
+   9 10  8
+
+Array: [2, 4, 5, 9, 10, 8]
+```
+
+---
+
+### ⏬ Heap Operations (Min-Heap)
+
+- **Insert**:
+  - Add at the end of array, then **bubble up** (swap with parent until heap property is restored).
+- **Extract Min**:
+  - Remove root (index 0), move last element to root, then **heapify down** (swap with smaller child until heap property restored).
+- **Build Heap**:
+  - From unsorted array in O(n) time using `heapify()` from bottom-up.
