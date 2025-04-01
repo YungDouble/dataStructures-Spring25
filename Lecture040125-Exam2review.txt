@@ -220,5 +220,663 @@ Red-Black Rules:
 | Red-Black Tree| O(log n) | O(log n) | O(log n) |
 
 ---
+Examples of Rotation: 
 
-✅ Want to walk through a rotation example or code up insertions in an AVL or Red-Black Tree next?
+We’ll do:
+
+1. **Right Rotation (LL case)**  
+2. **Left Rotation (RR case)**  
+3. **Left-Right Rotation (LR case)**  
+4. **Right-Left Rotation (RL case)**
+
+---
+
+### 1️⃣ Right Rotation (LL Case)
+
+**Trigger**: Inserting into the **left subtree of the left child**.
+
+#### Insert: 30 → 20 → 10
+
+```
+Before rotation:
+        30
+       /
+     20
+    /
+  10
+
+Balance factor at 30 = 2 (left-heavy)
+```
+
+**Right Rotation around 30:**
+
+```
+After rotation:
+      20
+     /  \
+   10    30
+```
+
+---
+
+### 2️⃣ Left Rotation (RR Case)
+
+**Trigger**: Inserting into the **right subtree of the right child**.
+
+#### Insert: 10 → 20 → 30
+
+```
+Before rotation:
+    10
+      \
+       20
+         \
+          30
+
+Balance factor at 10 = -2 (right-heavy)
+```
+
+**Left Rotation around 10:**
+
+```
+After rotation:
+       20
+      /  \
+    10    30
+```
+
+---
+
+### 3️⃣ Left-Right Rotation (LR Case)
+
+**Trigger**: Inserting into the **right subtree of the left child**.
+
+#### Insert: 30 → 10 → 20
+
+```
+Before rotation:
+        30
+       /
+     10
+       \
+        20
+
+Balance factor at 30 = 2 (left-heavy), but left child is right-heavy.
+```
+
+**Step 1: Left rotation at 10**
+
+```
+        30
+       /
+     20
+     /
+   10
+```
+
+**Step 2: Right rotation at 30**
+
+```
+      20
+     /  \
+   10    30
+```
+
+---
+
+### 4️⃣ Right-Left Rotation (RL Case)
+
+**Trigger**: Inserting into the **left subtree of the right child**.
+
+#### Insert: 10 → 30 → 20
+
+```
+Before rotation:
+    10
+      \
+       30
+      /
+    20
+
+Balance factor at 10 = -2 (right-heavy), but right child is left-heavy.
+```
+
+**Step 1: Right rotation at 30**
+
+```
+    10
+      \
+       20
+         \
+          30
+```
+
+**Step 2: Left rotation at 10**
+
+```
+      20
+     /  \
+   10    30
+```
+
+---
+
+
+---
+
+### 🔑 What is Hashing?
+
+**Hashing** is the process of converting a key into an index using a **hash function**, so data can be inserted, searched, or deleted in near **constant time** (O(1) average case).
+
+---
+
+### 🧠 Hash Table
+
+- **Data structure** that stores key-value pairs.
+- Uses a **hash function** to compute an index in an array (the table).
+- Ideal for quick lookups like dictionaries, symbol tables, caches.
+
+---
+
+### ⚙️ Hash Function
+
+A **hash function** `h(key)` maps a key to an index in the table.
+
+Requirements:
+- Must be **fast**
+- Should **distribute keys uniformly**
+- Must be **deterministic** (same key → same hash)
+
+Example (simple):
+```cpp
+int hash(int key) {
+    return key % table_size;
+}
+```
+
+---
+
+### ❌ Collisions
+
+When two keys hash to the **same index**, it's called a **collision**.
+
+---
+
+### 🛠️ Collision Resolution Techniques
+
+#### 1. **Chaining (Separate Chaining)**
+- Each slot holds a **linked list** of entries.
+- When collision occurs, just add to the list at that index.
+
+```
+Table[2]: → (12) → (22)
+```
+
+#### 2. **Open Addressing**
+- All data is stored directly in the table (no extra structure).
+- When a collision happens, probe for the next empty slot.
+
+**Probing methods:**
+- **Linear Probing**: `h(k), h(k)+1, h(k)+2, ...`
+- **Quadratic Probing**: `h(k), h(k)+1², h(k)+2², ...`
+- **Double Hashing**: Use second hash function for jump size.
+
+---
+
+### 📈 Load Factor (α)
+
+- **α = n / table_size**
+- Ratio of stored elements to table size.
+- High α ⇒ more collisions.
+- Keep **α < 0.7** for good performance (esp. in open addressing).
+
+---
+
+### 🔁 Rehashing
+
+- When load factor gets too high, create a new larger table and re-insert all keys.
+- Often double the size (next prime is ideal).
+
+---
+
+### ✅ Hash Table Time Complexity
+
+| Operation | Avg Time | Worst Time |
+|-----------|----------|------------|
+| Insert    | O(1)     | O(n)       |
+| Search    | O(1)     | O(n)       |
+| Delete    | O(1)     | O(n)       |
+
+(Avg case assumes good hash function and low collisions.)
+
+---
+
+### 🧪 Example:
+
+```cpp
+table_size = 7
+keys = [10, 20, 15, 7]
+hash(key) = key % 7
+
+Indexes:
+10 % 7 = 3 → table[3]
+20 % 7 = 6 → table[6]
+15 % 7 = 1 → table[1]
+7  % 7 = 0 → table[0]
+```
+
+---
+
+Absolutely! Let’s look at **examples** of the three main **open addressing** methods in hash tables:
+
+We'll use:
+- **Hash function**: `h(key) = key % 7`
+- **Table size**: `7`
+- We'll insert: `10, 20, 15, 7, 32`
+
+---
+
+### 📦 Initial Setup:
+
+```plaintext
+Empty table (size = 7):
+[0] _
+[1] _
+[2] _
+[3] _
+[4] _
+[5] _
+[6] _
+```
+
+---
+
+### 🔁 1. **Linear Probing**
+
+If collision occurs, probe **next slot (i + 1)** until empty.
+
+**Insert 10** → 10 % 7 = 3  
+→ table[3] is empty → insert at index 3
+
+**Insert 20** → 20 % 7 = 6  
+→ table[6] is empty → insert at index 6
+
+**Insert 15** → 15 % 7 = 1  
+→ table[1] is empty → insert at index 1
+
+**Insert 7** → 7 % 7 = 0  
+→ table[0] is empty → insert at index 0
+
+**Insert 32** → 32 % 7 = 4  
+→ table[4] is empty → insert at index 4
+
+✅ Final Table:
+```plaintext
+[0]  7
+[1] 15
+[2] _
+[3] 10
+[4] 32
+[5] _
+[6] 20
+```
+
+Now let's see what happens **with a collision**:
+
+**Insert 17** → 17 % 7 = 3 → table[3] is full  
+Linear probing checks:
+- table[4] → full  
+- table[5] → empty → insert at 5
+
+✅ Table now:
+```plaintext
+[0]  7
+[1] 15
+[2] _
+[3] 10
+[4] 32
+[5] 17
+[6] 20
+```
+
+---
+
+### 🔁 2. **Quadratic Probing**
+
+Probes in steps of `i²`:  
+index = `(h(key) + i²) % table_size`, for i = 0, 1, 2...
+
+**Insert 10** → 10 % 7 = 3 → table[3] = empty → insert
+
+**Insert 17** → 17 % 7 = 3 → collision  
+Try:
+- i=1 → (3 + 1²) % 7 = 4 → empty → insert at index 4
+
+**Insert 24** → 24 % 7 = 3 → collision  
+Try:
+- i=1 → (3 + 1²) % 7 = 4 → full  
+- i=2 → (3 + 4) % 7 = 0 → insert at index 0
+
+✅ Table:
+```plaintext
+[0] 24
+[1] _
+[2] _
+[3] 10
+[4] 17
+[5] _
+[6] _
+```
+
+---
+
+### 🔁 3. **Double Hashing**
+
+Use two hash functions:
+- `h1(key) = key % 7`
+- `h2(key) = 5 - (key % 5)` (secondary hash must not be 0!)
+
+Probe: `(h1 + i * h2) % table_size`
+
+**Insert 10**:  
+- h1 = 10 % 7 = 3  
+- h2 = 5 - (10 % 5) = 5 - 0 = 5  
+→ table[3] = empty → insert
+
+**Insert 17**:  
+- h1 = 3, h2 = 3  
+- index = (3 + 0×3) % 7 = 3 → collision  
+- i=1 → (3 + 1×3) % 7 = 6 → insert at 6
+
+**Insert 24**:  
+- h1 = 3, h2 = 1  
+- i=0 → 3  
+- i=1 → 4 → insert at 4
+
+✅ Table:
+```plaintext
+[0] _
+[1] _
+[2] _
+[3] 10
+[4] 24
+[5] _
+[6] 17
+```
+
+---
+
+### 🧠 Summary
+
+| Method            | Probe Sequence (on collision)           |
+|------------------|------------------------------------------|
+| Linear Probing   | h, h+1, h+2, ...                         |
+| Quadratic Probing| h, h+1², h+2², ...                       |
+| Double Hashing   | h1, h1 + h2, h1 + 2*h2, ...              |
+
+Each method has tradeoffs:
+- **Linear probing**: Simple, but causes **clustering**.
+- **Quadratic probing**: Reduces clustering, but may fail to find empty slot if table is too full.
+- **Double hashing**: Best distribution but needs good second hash.
+
+---
+
+Awesome! Let’s tackle **Graphs** next — an essential part of Data Structures and Algorithms. We’ll go step by step: definition ➝ BFS ➝ DFS ➝ comparisons.
+
+---
+
+### 🌐 What is a Graph?
+
+A **graph** is a collection of:
+
+- **Vertices (nodes)**: Represent entities.
+- **Edges (connections)**: Represent relationships between vertices.
+
+Graphs can be:
+
+1. **Directed** or **Undirected**  
+   - Directed: edges have a direction (A ➝ B)  
+   - Undirected: edges go both ways (A — B)
+
+2. **Weighted** or **Unweighted**  
+   - Weighted: edges have costs/weights (like distance, time, etc.)  
+   - Unweighted: all edges treated equally
+
+3. **Cyclic** or **Acyclic**  
+   - Cyclic: contains cycles  
+   - Acyclic: no cycles (e.g., DAG – Directed Acyclic Graph)
+
+4. **Connected** or **Disconnected**  
+   - Connected: there's a path between every pair of vertices  
+   - Disconnected: not all nodes are reachable from each other
+
+---
+
+### 📊 Graph Representations
+
+1. **Adjacency Matrix**  
+   - 2D array where `matrix[i][j] = 1` if there’s an edge from `i` to `j`
+   - Pros: Fast lookup  
+   - Cons: Space = O(V²)
+
+2. **Adjacency List**  
+   - Array of lists: each index `i` stores all neighbors of vertex `i`  
+   - Pros: Space = O(V + E), better for sparse graphs
+
+---
+
+### 🔍 Breadth-First Search (BFS)
+
+- **Level-order traversal** of a graph.
+- Uses a **queue (FIFO)**.
+- Good for **finding shortest path (unweighted)**, or all nodes reachable from a start node.
+
+#### Pseudocode:
+```cpp
+BFS(Graph, start):
+  create empty queue Q
+  mark start as visited
+  enqueue start into Q
+
+  while Q is not empty:
+    node = Q.dequeue()
+    for each neighbor of node:
+      if not visited:
+        mark visited
+        enqueue neighbor
+```
+
+#### Example:
+
+Graph:
+```
+A -- B -- C
+|         |
+D ------- E
+```
+
+**BFS from A** → `A, B, D, C, E`
+
+---
+
+### 🔎 Depth-First Search (DFS)
+
+- **Explore as deep as possible** before backtracking.
+- Uses **stack** (explicit or via recursion).
+- Good for path-finding, cycle detection, topological sort, etc.
+
+#### Pseudocode (recursive):
+```cpp
+DFS(Graph, node):
+  mark node as visited
+  for each neighbor:
+    if not visited:
+      DFS(neighbor)
+```
+
+**DFS from A** → `A, B, C, E, D` *(depends on adjacency order)*
+
+---
+
+### 🔁 BFS vs. DFS
+
+| Feature            | BFS                         | DFS                         |
+|--------------------|-----------------------------|-----------------------------|
+| Uses               | Queue                       | Stack / Recursion           |
+| Traversal Order    | Level by level              | Deep before wide            |
+| Space              | O(V)                        | O(V)                        |
+| Shortest Path      | ✅ Yes (unweighted graphs)   | ❌ No                        |
+| Cycle Detection    | ✅ (with parent tracking)    | ✅                          |
+| Complete?          | Yes                         | Yes                         |
+
+---
+
+### 📚 Common Applications
+
+- **BFS**: Shortest path (unweighted), social networks, web crawlers  
+- **DFS**: Topological sort, detecting cycles, solving puzzles (e.g., maze), connected components
+
+---
+
+Awesome — you’re covering some of the most powerful graph algorithms! Let’s go over:
+
+1. ✅ **Dijkstra’s Algorithm** (for shortest paths)  
+2. ✅ **Minimum Spanning Tree (MST)**  
+3. ✅ **Prim’s Algorithm** (to find MST)
+
+---
+
+## 🚀 Dijkstra’s Algorithm
+
+**Purpose**: Find the **shortest path** from a **source node** to **all other nodes** in a **weighted graph with non-negative edge weights**.
+
+---
+
+### 🧠 How it Works:
+
+- Uses a **priority queue** (min-heap).
+- Maintains a **distance array** (initially all ∞, source = 0).
+- Always chooses the **closest unvisited node**.
+- Updates distances to its neighbors (relaxation).
+- Once a node is visited, its shortest path is final.
+
+---
+
+### 🧮 Pseudocode (simplified):
+
+```cpp
+function Dijkstra(Graph, source):
+    dist[] = {∞, ∞, ..., ∞}
+    dist[source] = 0
+    minHeap = { (0, source) }
+
+    while minHeap not empty:
+        (d, u) = minHeap.pop()
+        for each neighbor v of u:
+            if dist[v] > dist[u] + weight(u, v):
+                dist[v] = dist[u] + weight(u, v)
+                minHeap.push((dist[v], v))
+```
+
+---
+
+### Example:
+
+Graph:
+```
+     (2)
+ A ------- B
+ |         |
+(1)       (3)
+ |         |
+ C ------- D
+     (1)
+```
+
+- Source = A  
+- Dijkstra gives shortest paths:
+  - A → A: 0
+  - A → C: 1
+  - A → D: 2
+  - A → B: 2
+
+---
+
+## 🌲 Minimum Spanning Tree (MST)
+
+**Goal**: Connect **all vertices** of a weighted undirected graph with **minimum total edge weight** and **no cycles**.
+
+- MST has exactly **V-1 edges**
+- **Multiple MSTs** may exist if weights are not unique.
+
+---
+
+## 🔧 Prim’s Algorithm
+
+**Purpose**: Find the **MST** using a **greedy** approach.
+
+---
+
+### 🧠 How it Works:
+
+- Start with any node.
+- Grow the tree by **adding the smallest edge** connecting the tree to a new node.
+- Use a **min-heap** to choose the smallest edge.
+
+---
+
+### 🧮 Pseudocode (simplified):
+
+```cpp
+function Prim(Graph, start):
+    visited[] = false
+    minHeap = { (0, start) }
+    totalCost = 0
+
+    while minHeap not empty:
+        (cost, u) = minHeap.pop()
+        if visited[u]: continue
+        visited[u] = true
+        totalCost += cost
+
+        for each (v, weight) adjacent to u:
+            if not visited[v]:
+                minHeap.push((weight, v))
+```
+
+---
+
+### Prim vs Dijkstra
+
+| Feature             | Prim's                        | Dijkstra's                      |
+|---------------------|-------------------------------|----------------------------------|
+| Goal                | Minimum Spanning Tree (MST)   | Shortest paths from a source     |
+| Graph Type          | Undirected, weighted          | Directed or undirected, weighted (no negative) |
+| Strategy            | Greedy                        | Greedy with relaxation           |
+| Starts With         | Any node                      | Source node                      |
+
+---
+
+### MST Example:
+
+Graph:
+```
+   (2)
+A------B
+| \    |
+1  3   4
+|   \  |
+C------D
+    (5)
+```
+
+**Prim’s MST** might include:
+- A—C (1)
+- A—B (2)
+- C—D (3)
+
+Total cost: **1 + 2 + 3 = 6**
+
+---
+
+✅ Let me know if you want to code one of these in C++, trace an example by hand, or look at Kruskal’s Algorithm next!
