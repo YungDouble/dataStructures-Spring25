@@ -130,7 +130,6 @@ Final sorted array:
 
 Want to try a quick practice example together? Or want to see how it compares with radix sort or bucket sort next?
 
-  */
 
 let C[0..k] be a new array
   for i = 0 to k
@@ -144,7 +143,7 @@ let C[0..k] be a new array
 for j = A.length downnt 1
   B[C[A[j]]] = A[j]
   C[A[j]] = C[A[j]] - 1
-/*
+
 what is [A[j]]? it is the value that is 2
   B[C[A[j]]] => A[j] = 2, A of J is 2
   what is C[2]? = 5
@@ -215,8 +214,183 @@ Imagine you're lining up **kids by age**:
 - Step 2: Say: “If 3 kids are younger than age 7, a kid who is 7 goes in slot 4.”
 - Step 3: Place each kid in order, updating the count so the next one doesn't overwrite.
 
+## 👧🏽🧒🏼👦🏻 Example: Kids with These Ages
+
+Let’s say these are the kids and their ages:
+
+```text
+Ages = [4, 2, 2, 5, 3, 3, 1]
+```
+---
+### ✅ Step 1: Count how many kids are each age
+
+We make a count table, `C`, where index = age.
+
+We’ll assume the max age is 5, so our count array goes from `0` to `5`:
+
+```text
+Initialize C[0..5] = [0, 0, 0, 0, 0, 0]
+```
+
+Now we count how many kids are age 1, 2, etc:
+
+- Ages: [4, 2, 2, 5, 3, 3, 1]
+- Go through each age and count:
+
+```text
+C[1] = 1
+C[2] = 2
+C[3] = 2
+C[4] = 1
+C[5] = 1
+```
+
+So now:
+```text
+C = [0, 1, 2, 2, 1, 1]
+```
+
 ---
 
-Let me know if you want to step through a **full example** together — or if you're ready to compare it with **Radix Sort** next!
+### ✅ Step 2: Figure out *where* each age goes in the final lineup
 
-*/
+We want to know:  
+"How many kids are **younger** than age i?"  
+So we convert counts to positions using cumulative sums:
+
+```text
+C[0] = 0
+C[1] = 1           ← 1 kid ≤ age 1
+C[2] = 1 + 2 = 3    ← 3 kids ≤ age 2
+C[3] = 3 + 2 = 5    ← 5 kids ≤ age 3
+C[4] = 5 + 1 = 6
+C[5] = 6 + 1 = 7
+```
+
+So now:
+```text
+C = [0, 1, 3, 5, 6, 7]
+```
+
+This means:
+- Age 1 kid goes at position 1
+- Age 2 kids go in positions 2–3
+- Age 3 kids go in positions 4–5
+- Age 4 kid goes at position 6
+- Age 5 kid goes at position 7
+
+---
+
+### ✅ Step 3: Place each kid in the correct position
+
+Now we go **backward** through the original list (to keep the sort stable):
+
+We use an output array `B` of size 7:
+
+```text
+Ages = [4, 2, 2, 5, 3, 3, 1]
+C =    [0, 1, 3, 5, 6, 7]
+```
+
+We go backwards:
+
+- Age 1 → goes to C[1] = 1 → B[1] = 1 → then C[1] = 0
+- Age 3 → C[3] = 5 → B[5] = 3 → C[3] = 4
+- Age 3 → C[3] = 4 → B[4] = 3 → C[3] = 3
+- Age 5 → C[5] = 7 → B[7] = 5 → C[5] = 6
+- Age 2 → C[2] = 3 → B[3] = 2 → C[2] = 2
+- Age 2 → C[2] = 2 → B[2] = 2 → C[2] = 1
+- Age 4 → C[4] = 6 → B[6] = 4 → C[4] = 5
+
+Final sorted array `B` (ignoring index 0 if you’re 1-based):
+
+```text
+B = [_, 1, 2, 2, 3, 3, 4, 5]
+```
+
+So your sorted list of ages is:
+
+```text
+[1, 2, 2, 3, 3, 4, 5]
+```
+
+---
+
+### 🧠 Recap:
+
+1. You **count** how many kids are each age ✅  
+2. You figure out where **each age should go** ✅  
+3. You **place** each kid using the count ✅  
+
+This is why it’s called **Counting Sort** — you never compare ages — you **just count and place**!
+
+---
+
+  Great question! Let’s break down the **running time of Counting Sort** so you really get it.
+
+---
+
+## ⏱️ **Running Time of Counting Sort**
+
+### 🧠 Big Idea:
+Counting Sort runs in **linear time** — but with a twist:  
+It depends on both the number of items **and** the size of the value range.
+
+### 🎯 Time Complexity:
+\[
+O(n + k)
+\]
+
+Where:
+- \( n \) = number of elements in the input array `A`
+- \( k \) = the **range** of input values (e.g., if values go from 0 to 100, then \( k = 101 \))
+
+---
+
+### ✅ Step-by-Step Breakdown:
+
+| Step                                    | Time |
+|----------------------------------------|------|
+| Initialize count array `C[0..k]`       | \(O(k)\) |
+| Count each element in input `A`        | \(O(n)\) |
+| Transform `C` into prefix sums         | \(O(k)\) |
+| Place elements into output array `B`   | \(O(n)\) |
+
+Total time:  
+\[
+O(n) + O(k) + O(k) + O(n) = O(n + k)
+\]
+
+---
+
+### 📌 When is it **fast**?
+
+- When \(k\) is **not much bigger than** \(n\)
+  - For example: sorting 10,000 elements where values range from 0 to 1000 ✅
+  
+---
+
+### ⚠️ When is it **not ideal**?
+
+- If the **range \(k\)** is way larger than the number of elements
+  - Example: Sorting 10 values that range from 1 to 1,000,000 ❌
+  - You’d waste space and time initializing a giant array
+
+---
+
+### 🧠 Summary:
+
+| Feature            | Value            |
+|--------------------|------------------|
+| Best case          | \(O(n + k)\)     |
+| Worst case         | \(O(n + k)\)     |
+| Stable?            | ✅ Yes           |
+| In-place?          | ❌ No (uses extra space for output) |
+| Space complexity   | \(O(n + k)\)     |
+
+---
+
+Let me know if you want to compare it with **Radix Sort** or see how it stacks up to something like **Merge Sort** or **QuickSort**!
+
+
+
