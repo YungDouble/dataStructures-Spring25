@@ -254,13 +254,8 @@ Output: **9** (pick items 2 and 4: 4 + 5 = 9)
 - **Space:** \( O(nW) \) → can be optimized to \( O(W) \) using 1D DP
 
 ---
-
-Let me know if you want to try a problem or go over the **space-optimized version**!
-
-  -Dynamic Programming uses mathematical induction, the function OPT(), in this problem knapsack, this
+-Dynamic Programming uses mathematical induction, the function OPT(), in this problem knapsack, this
 function will maximize the profit it will pick a subset from all items to max profit
-
-Absolutely — let's go **line-by-line** and **concept-by-concept** so you understand this deeply. This is a standard **bottom-up Dynamic Programming** implementation of the **0/1 Knapsack Problem**.
 
 ---
 
