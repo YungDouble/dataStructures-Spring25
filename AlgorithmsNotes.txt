@@ -1,0 +1,147 @@
+Absolutely! Let’s go over each one step by step — I’ll explain the concept, how it works, and give a simple example for each. These are *must-know* algorithms for graphs in data structures.
+
+---
+
+## 🔷 1. **BFS (Breadth-First Search)**
+
+### 📌 Concept:
+- Explores a graph **level by level**
+- Uses a **queue (FIFO)**
+- Great for finding the shortest path in **unweighted graphs**
+
+### 🧠 Pseudocode:
+```cpp
+BFS(Graph, start):
+    create a queue Q
+    mark start as visited
+    enqueue start
+
+    while Q is not empty:
+        node = dequeue Q
+        for each neighbor of node:
+            if neighbor not visited:
+                mark neighbor as visited
+                enqueue neighbor
+```
+
+### 🔄 Order Example:
+If the graph is:
+```
+A - B
+|   |
+C - D
+```
+BFS starting at A → A, B, C, D
+
+---
+
+## 🔷 2. **DFS (Depth-First Search)**
+
+### 📌 Concept:
+- Explores **as far as possible** along one branch before backtracking
+- Uses a **stack** (either implicit via recursion or explicit)
+
+### 🧠 Pseudocode:
+```cpp
+DFS(Graph, node):
+    mark node as visited
+    for each neighbor of node:
+        if neighbor not visited:
+            DFS(Graph, neighbor)
+```
+
+### 🔄 Order Example:
+Same graph:
+```
+A - B
+|   |
+C - D
+```
+DFS from A → A, C, D, B *(order can vary)*
+
+---
+
+## 🔷 3. **Dijkstra’s Algorithm**
+
+### 📌 Purpose:
+Find the **shortest path** from a start node to all others in a **weighted, non-negative** graph.
+
+### 🛠 Uses a **min-heap / priority queue**
+
+### 🧠 Pseudocode (high-level):
+```cpp
+Dijkstra(Graph, start):
+    set distance[start] = 0, others = ∞
+    create min-heap Q with (start, 0)
+
+    while Q not empty:
+        (node, dist) = extract_min from Q
+        for each neighbor:
+            if new_dist < current_dist:
+                update dist[neighbor]
+                add to Q
+```
+
+### 🔄 Example:
+Weighted graph:
+```
+A --2-- B --3-- C
+ \      |
+  \--1--D
+```
+Shortest path from A → D = 1  
+From A → C = 1 (to D) + 3 (to C) = 4
+
+---
+
+## 🔷 4. **Prim’s Algorithm**
+
+### 📌 Purpose:
+Find the **Minimum Spanning Tree (MST)** of a connected, weighted graph.
+
+- Greedy
+- Starts from any node and grows the MST
+- Uses a **priority queue**
+
+### 🧠 Steps:
+1. Start with any node.
+2. Add the smallest edge that connects a new node to the MST.
+3. Repeat until all nodes are included.
+
+### 🔄 Key:
+- Keeps track of **visited nodes**
+- Chooses the **smallest edge** connecting MST to a non-MST node
+
+---
+
+## 🔷 5. **Kruskal’s Algorithm**
+
+### 📌 Purpose:
+Also finds **MST**, but works differently from Prim’s.
+
+- Greedy
+- Sorts **all edges** by weight and picks the smallest
+- Uses **Union-Find / Disjoint Set** to avoid cycles
+
+### 🧠 Steps:
+1. Sort all edges by weight.
+2. For each edge:
+   - If it connects two **disconnected** components → add it.
+   - Else → skip (would create a cycle).
+3. Stop when MST has (V - 1) edges.
+
+---
+
+### ✨ Summary Table:
+
+| Algorithm     | Goal                        | Structure Used       | Notes                            |
+|---------------|-----------------------------|----------------------|----------------------------------|
+| **BFS**       | Traverse level by level     | Queue                | Shortest path in unweighted     |
+| **DFS**       | Traverse deep first         | Stack / Recursion    | Good for connectivity/islands   |
+| **Dijkstra**  | Shortest path (weighted)    | Min-Heap             | Non-negative weights only       |
+| **Prim’s**    | Minimum Spanning Tree       | Priority Queue       | Greedy, grows from one node     |
+| **Kruskal’s** | Minimum Spanning Tree       | Union-Find (DSU)     | Greedy, edge-sorted             |
+
+---
+
+Want to go through an actual example problem for any of these? I can walk you through how to solve it step by step.
